@@ -476,6 +476,21 @@ export class MIMEMessage {
     isObject(v: unknown): v is object {
         return !!v && v.constructor === Object;
     }
+
+    /**
+     * Convenience to strip common fingerprints at once.
+     * Call this right before serialization if you want.
+     */
+    stripFingerprints(
+        headers: string[] = [
+            "Message-ID",
+            "Message-Id",
+            "X-Mailer",
+            "User-Agent",
+        ],
+    ): void {
+        this.headers.removeMany(headers);
+    }
 }
 
 export interface EnvironmentContext {

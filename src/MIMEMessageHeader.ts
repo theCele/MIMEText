@@ -259,21 +259,6 @@ export class MIMEMessageHeader {
     isArray(v: unknown): v is never[] {
         return !!v && v.constructor === Array;
     }
-
-    /**
-     * Convenience to strip common fingerprints at once.
-     * Call this right before serialization if you want.
-     */
-    stripFingerprints(
-        headers: string[] = [
-            "Message-ID",
-            "Message-Id",
-            "X-Mailer",
-            "User-Agent",
-        ],
-    ): void {
-        this.removeMany(headers);
-    }
 }
 
 export class MIMEMessageContentHeader extends MIMEMessageHeader {

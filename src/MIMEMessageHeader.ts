@@ -120,6 +120,32 @@ export class MIMEMessageHeader {
         return ind !== -1 ? this.fields[ind]!.value : undefined;
     }
 
+    remove(name: string): void {
+        const n = name.toLowerCase();
+        // @ts-ignore – assumes this.fields exists like in your code sample
+        this.fields = this.fields.filter(
+            (h: any) => h.name.toLowerCase() !== n,
+        );
+    }
+
+    /**
+     * Remove several headers at once (case-insensitive).
+     */
+    removeMany(names: string[]): void {
+        const lower = (s: string) => s.toLowerCase();
+        const set = new Set(names.map(lower));
+        // @ts-ignore
+        this.fields = this.fields.filter((h: any) => !set.has(lower(h.name)));
+    }
+
+    /**
+     * Does a header exist (case-insensitive)?
+     */
+    has(name: string): boolean {
+        // @ts-ignore
+        return this.fields.some((h: any) => lower(h.name) === lower(name));
+    }
+
     set(name: string, value: string | Mailbox | Mailbox[]): HeaderField {
         const fieldMatcher = (obj: HeaderField): boolean =>
             obj.name.toLowerCase() === name.toLowerCase();
@@ -232,6 +258,21 @@ export class MIMEMessageHeader {
 
     isArray(v: unknown): v is never[] {
         return !!v && v.constructor === Array;
+    }
+
+    /**
+     * Convenience to strip common fingerprints at once.
+     * Call this right before serialization if you want.
+     */
+    stripFingerprints(
+        headers: string[] = [
+            "Message-ID",
+            "Message-Id",
+            "X-Mailer",
+            "User-Agent",
+        ],
+    ): void {
+        this.removeMany(headers);
     }
 }
 

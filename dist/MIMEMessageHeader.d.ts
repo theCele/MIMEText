@@ -7,6 +7,15 @@ export declare class MIMEMessageHeader {
     dump(): string;
     toObject(): HeadersObject;
     get(name: string): string | Mailbox | Mailbox[] | undefined;
+    remove(name: string): void;
+    /**
+     * Remove several headers at once (case-insensitive).
+     */
+    removeMany(names: string[]): void;
+    /**
+     * Does a header exist (case-insensitive)?
+     */
+    has(name: string): boolean;
     set(name: string, value: string | Mailbox | Mailbox[]): HeaderField;
     setCustom(obj: HeaderField): HeaderField;
     validateMailboxSingle(v: unknown): v is Mailbox;
@@ -17,6 +26,11 @@ export declare class MIMEMessageHeader {
     isObject(v: unknown): v is object;
     isArrayOfMailboxes(v: unknown): v is Mailbox[];
     isArray(v: unknown): v is never[];
+    /**
+     * Convenience to strip common fingerprints at once.
+     * Call this right before serialization if you want.
+     */
+    stripFingerprints(headers?: string[]): void;
 }
 export declare class MIMEMessageContentHeader extends MIMEMessageHeader {
     fields: {
@@ -24,7 +38,10 @@ export declare class MIMEMessageContentHeader extends MIMEMessageHeader {
     }[];
     constructor(envctx: EnvironmentContext);
 }
-export type HeadersObject = Record<string, string | Mailbox | Mailbox[] | undefined>;
+export type HeadersObject = Record<
+    string,
+    string | Mailbox | Mailbox[] | undefined
+>;
 export interface HeaderField {
     name: string;
     dump?: (v: string | Mailbox | Mailbox[] | undefined) => string;

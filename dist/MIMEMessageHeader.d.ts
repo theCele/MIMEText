@@ -26,11 +26,6 @@ export declare class MIMEMessageHeader {
     isObject(v: unknown): v is object;
     isArrayOfMailboxes(v: unknown): v is Mailbox[];
     isArray(v: unknown): v is never[];
-    /**
-     * Convenience to strip common fingerprints at once.
-     * Call this right before serialization if you want.
-     */
-    stripFingerprints(headers?: string[]): void;
 }
 export declare class MIMEMessageContentHeader extends MIMEMessageHeader {
     fields: {

@@ -1,7 +1,7 @@
-import type { MailboxAddrObject, MailboxConfig } from './Mailbox.js';
-import { type HeadersObject, MIMEMessageHeader } from './MIMEMessageHeader.js';
-import { Mailbox } from './Mailbox.js';
-import { MIMEMessageContent } from './MIMEMessageContent.js';
+import type { MailboxAddrObject, MailboxConfig } from "./Mailbox.js";
+import { type HeadersObject, MIMEMessageHeader } from "./MIMEMessageHeader.js";
+import { Mailbox } from "./Mailbox.js";
+import { MIMEMessageContent } from "./MIMEMessageContent.js";
 export declare class MIMEMessage {
     envctx: EnvironmentContext;
     headers: MIMEMessageHeader;
@@ -12,7 +12,11 @@ export declare class MIMEMessage {
     constructor(envctx: EnvironmentContext);
     asRaw(): string;
     asEncoded(): string;
-    dumpTextContent(plaintext: MIMEMessageContent | undefined, html: MIMEMessageContent | undefined, boundary: string): string;
+    dumpTextContent(
+        plaintext: MIMEMessageContent | undefined,
+        html: MIMEMessageContent | undefined,
+        boundary: string,
+    ): string;
     hasInlineAttachments(): boolean;
     hasAttachments(): boolean;
     getAttachments(): MIMEMessageContent[] | [];
@@ -21,14 +25,32 @@ export declare class MIMEMessage {
     addAttachment(opts: AttachmentOptions): MIMEMessageContent;
     addMessage(opts: ContentOptions): MIMEMessageContent;
     private _addMessage;
-    setSender(input: MailboxAddrObject | string, config?: MailboxConfig): Mailbox;
+    setSender(
+        input: MailboxAddrObject | string,
+        config?: MailboxConfig,
+    ): Mailbox;
     getSender(): Mailbox | undefined;
-    setRecipients(input: MailboxAddrObject | string | MailboxAddrObject[] | string[], config?: MailboxConfig): Mailbox[];
+    setRecipients(
+        input: MailboxAddrObject | string | MailboxAddrObject[] | string[],
+        config?: MailboxConfig,
+    ): Mailbox[];
     getRecipients(config?: MailboxConfig): Mailbox | Mailbox[] | undefined;
-    setRecipient(input: MailboxAddrObject | string | MailboxAddrObject[] | string[], config?: MailboxConfig): Mailbox[];
-    setTo(input: MailboxAddrObject | string | MailboxAddrObject[] | string[], config?: MailboxConfig): Mailbox[];
-    setCc(input: MailboxAddrObject | string | MailboxAddrObject[] | string[], config?: MailboxConfig): Mailbox[];
-    setBcc(input: MailboxAddrObject | string | MailboxAddrObject[] | string[], config?: MailboxConfig): Mailbox[];
+    setRecipient(
+        input: MailboxAddrObject | string | MailboxAddrObject[] | string[],
+        config?: MailboxConfig,
+    ): Mailbox[];
+    setTo(
+        input: MailboxAddrObject | string | MailboxAddrObject[] | string[],
+        config?: MailboxConfig,
+    ): Mailbox[];
+    setCc(
+        input: MailboxAddrObject | string | MailboxAddrObject[] | string[],
+        config?: MailboxConfig,
+    ): Mailbox[];
+    setBcc(
+        input: MailboxAddrObject | string | MailboxAddrObject[] | string[],
+        config?: MailboxConfig,
+    ): Mailbox[];
     setSubject(value: string): string;
     getSubject(): string | undefined;
     setHeader(name: string, value: string | Mailbox | Mailbox[]): string;
@@ -40,6 +62,11 @@ export declare class MIMEMessage {
     generateBoundaries(): void;
     isArray(v: unknown): v is unknown[];
     isObject(v: unknown): v is object;
+    /**
+     * Convenience to strip common fingerprints at once.
+     * Call this right before serialization if you want.
+     */
+    stripFingerprints(headers?: string[]): void;
 }
 export interface EnvironmentContext {
     toBase64: (v: string) => string;
@@ -52,12 +79,17 @@ export interface Boundaries {
     alt: string;
     related: string;
 }
-export type ContentTransferEncoding = '7bit' | '8bit' | 'binary' | 'quoted-printable' | 'base64';
+export type ContentTransferEncoding =
+    | "7bit"
+    | "8bit"
+    | "binary"
+    | "quoted-printable"
+    | "base64";
 export interface ContentHeaders {
-    'Content-Type'?: string;
-    'Content-Transfer-Encoding'?: ContentTransferEncoding;
-    'Content-Disposition'?: string;
-    'Content-ID'?: string;
+    "Content-Type"?: string;
+    "Content-Transfer-Encoding"?: ContentTransferEncoding;
+    "Content-Disposition"?: string;
+    "Content-ID"?: string;
     [index: string]: string | undefined;
 }
 export interface ContentOptions {

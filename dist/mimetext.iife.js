@@ -3548,13 +3548,6 @@ var MimeText = (function (t, e) {
         isArray(t) {
             return !!t && t.constructor === Array;
         }
-        stripFingerprints() {
-            let t =
-                arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : ["Message-ID", "Message-Id", "X-Mailer", "User-Agent"];
-            this.removeMany(t);
-        }
     }
     class js extends Ms {
         constructor(t) {
@@ -3626,148 +3619,152 @@ var MimeText = (function (t, e) {
                 this.generateBoundaries();
         }
         asRaw() {
-            const t = this.envctx.eol,
-                e = this.headers.dump(),
-                r = this.getMessageByType("text/plain"),
-                n = this.getMessageByType("text/html"),
-                i = null != n ? n : null != r ? r : void 0;
-            if (void 0 === i)
+            var t;
+            const e = this.envctx.eol,
+                r = this.headers.dump(),
+                n = this.getMessageByType("text/plain"),
+                i = this.getMessageByType("text/html"),
+                o =
+                    null !== (t = null != i ? i : n) && void 0 !== t
+                        ? t
+                        : void 0;
+            if (void 0 === o)
                 throw new Wa(
                     "MIMETEXT_MISSING_BODY",
                     "No content added to the message.",
                 );
-            const o = this.hasAttachments(),
-                u = this.hasInlineAttachments(),
-                a =
-                    u && o
+            const u = this.hasAttachments(),
+                a = this.hasInlineAttachments(),
+                s =
+                    a && u
                         ? "mixed+related"
-                        : o
+                        : u
                           ? "mixed"
-                          : u
+                          : a
                             ? "related"
-                            : r && n
+                            : n && i
                               ? "alternative"
                               : "";
-            if ("mixed+related" === a) {
-                const i = this.getAttachments()
+            if ("mixed+related" === s) {
+                const t = this.getAttachments()
                         .map(
-                            (e) =>
+                            (t) =>
                                 "--" +
                                 this.boundaries.mixed +
-                                t +
-                                e.dump() +
-                                t +
-                                t,
+                                e +
+                                t.dump() +
+                                e +
+                                e,
                         )
                         .join("")
-                        .slice(0, -1 * t.length),
+                        .slice(0, -1 * e.length),
                     o = this.getInlineAttachments()
                         .map(
-                            (e) =>
+                            (t) =>
                                 "--" +
                                 this.boundaries.related +
-                                t +
-                                e.dump() +
-                                t +
-                                t,
+                                e +
+                                t.dump() +
+                                e +
+                                e,
                         )
                         .join("")
-                        .slice(0, -1 * t.length);
+                        .slice(0, -1 * e.length);
                 return (
+                    r +
                     e +
-                    t +
                     "Content-Type: multipart/mixed; boundary=" +
                     this.boundaries.mixed +
-                    t +
-                    t +
+                    e +
+                    e +
                     "--" +
                     this.boundaries.mixed +
-                    t +
+                    e +
                     "Content-Type: multipart/related; boundary=" +
                     this.boundaries.related +
-                    t +
-                    t +
-                    this.dumpTextContent(r, n, this.boundaries.related) +
-                    t +
-                    t +
+                    e +
+                    e +
+                    this.dumpTextContent(n, i, this.boundaries.related) +
+                    e +
+                    e +
                     o +
                     "--" +
                     this.boundaries.related +
                     "--" +
+                    e +
                     t +
-                    i +
                     "--" +
                     this.boundaries.mixed +
                     "--"
                 );
             }
-            if ("mixed" === a) {
-                const i = this.getAttachments()
+            if ("mixed" === s) {
+                const t = this.getAttachments()
                     .map(
-                        (e) =>
-                            "--" + this.boundaries.mixed + t + e.dump() + t + t,
+                        (t) =>
+                            "--" + this.boundaries.mixed + e + t.dump() + e + e,
                     )
                     .join("")
-                    .slice(0, -1 * t.length);
+                    .slice(0, -1 * e.length);
                 return (
+                    r +
                     e +
-                    t +
                     "Content-Type: multipart/mixed; boundary=" +
                     this.boundaries.mixed +
+                    e +
+                    e +
+                    this.dumpTextContent(n, i, this.boundaries.mixed) +
+                    e +
+                    (n && i ? "" : e) +
                     t +
-                    t +
-                    this.dumpTextContent(r, n, this.boundaries.mixed) +
-                    t +
-                    (r && n ? "" : t) +
-                    i +
                     "--" +
                     this.boundaries.mixed +
                     "--"
                 );
             }
-            if ("related" === a) {
-                const i = this.getInlineAttachments()
+            if ("related" === s) {
+                const t = this.getInlineAttachments()
                     .map(
-                        (e) =>
+                        (t) =>
                             "--" +
                             this.boundaries.related +
-                            t +
-                            e.dump() +
-                            t +
-                            t,
+                            e +
+                            t.dump() +
+                            e +
+                            e,
                     )
                     .join("")
-                    .slice(0, -1 * t.length);
+                    .slice(0, -1 * e.length);
                 return (
+                    r +
                     e +
-                    t +
                     "Content-Type: multipart/related; boundary=" +
                     this.boundaries.related +
+                    e +
+                    e +
+                    this.dumpTextContent(n, i, this.boundaries.related) +
+                    e +
+                    e +
                     t +
-                    t +
-                    this.dumpTextContent(r, n, this.boundaries.related) +
-                    t +
-                    t +
-                    i +
                     "--" +
                     this.boundaries.related +
                     "--"
                 );
             }
-            return "alternative" === a
-                ? e +
-                      t +
+            return "alternative" === s
+                ? r +
+                      e +
                       "Content-Type: multipart/alternative; boundary=" +
                       this.boundaries.alt +
-                      t +
-                      t +
-                      this.dumpTextContent(r, n, this.boundaries.alt) +
-                      t +
-                      t +
+                      e +
+                      e +
+                      this.dumpTextContent(n, i, this.boundaries.alt) +
+                      e +
+                      e +
                       "--" +
                       this.boundaries.alt +
                       "--"
-                : e + t + i.dump();
+                : r + e + o.dump();
         }
         asEncoded() {
             return this.envctx.toBase64WebSafe(this.asRaw());
@@ -4021,6 +4018,13 @@ var MimeText = (function (t, e) {
         }
         isObject(t) {
             return !!t && t.constructor === Object;
+        }
+        stripFingerprints() {
+            let t =
+                arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : ["Message-ID", "Message-Id", "X-Mailer", "User-Agent"];
+            this.headers.removeMany(t);
         }
     }
     const Is = {

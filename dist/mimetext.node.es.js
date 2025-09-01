@@ -263,11 +263,6 @@ class r {
     isArray(e) {
         return !!e && e.constructor === Array;
     }
-    stripFingerprints(
-        e = ["Message-ID", "Message-Id", "X-Mailer", "User-Agent"],
-    ) {
-        this.removeMany(e);
-    }
 }
 class o extends r {
     fields = [
@@ -650,6 +645,11 @@ class h {
     }
     isObject(e) {
         return !!e && e.constructor === Object;
+    }
+    stripFingerprints(
+        e = ["Message-ID", "Message-Id", "X-Mailer", "User-Agent"],
+    ) {
+        this.headers.removeMany(e);
     }
 }
 const u = {

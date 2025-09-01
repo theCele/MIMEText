@@ -1338,11 +1338,6 @@ var MimeText = (function (t, e) {
         isArray(t) {
             return !!t && t.constructor === Array;
         }
-        stripFingerprints(
-            t = ["Message-ID", "Message-Id", "X-Mailer", "User-Agent"],
-        ) {
-            this.removeMany(t);
-        }
     }
     class Nn extends Fn {
         fields = [
@@ -1742,6 +1737,11 @@ var MimeText = (function (t, e) {
         }
         isObject(t) {
             return !!t && t.constructor === Object;
+        }
+        stripFingerprints(
+            t = ["Message-ID", "Message-Id", "X-Mailer", "User-Agent"],
+        ) {
+            this.headers.removeMany(t);
         }
     }
     const Vn = {

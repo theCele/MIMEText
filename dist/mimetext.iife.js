@@ -130,8 +130,8 @@ var MimeText = (function (t, e) {
             : t;
     }
     var x,
-        A,
         M,
+        A,
         j,
         E,
         C,
@@ -148,8 +148,8 @@ var MimeText = (function (t, e) {
         k = { exports: {} },
         G = {};
     function V() {
-        if (A) return x;
-        A = 1;
+        if (M) return x;
+        M = 1;
         var t = function (t) {
             return t && t.Math === Math && t;
         };
@@ -166,9 +166,9 @@ var MimeText = (function (t, e) {
     }
     function W() {
         return j
-            ? M
+            ? A
             : ((j = 1),
-              (M = function (t) {
+              (A = function (t) {
                   try {
                       return !!t();
                   } catch (t) {
@@ -311,8 +311,8 @@ var MimeText = (function (t, e) {
         Ot,
         Tt,
         xt,
-        At,
         Mt,
+        At,
         jt,
         Et,
         Ct,
@@ -439,8 +439,8 @@ var MimeText = (function (t, e) {
         return (Ot = e ? String(e) : "");
     }
     function Zt() {
-        if (At) return xt;
-        At = 1;
+        if (Mt) return xt;
+        Mt = 1;
         var t,
             e,
             r = V(),
@@ -462,13 +462,13 @@ var MimeText = (function (t, e) {
         );
     }
     function Qt() {
-        if (jt) return Mt;
+        if (jt) return At;
         jt = 1;
         var t = Zt(),
             e = W(),
             r = V().String;
         return (
-            (Mt =
+            (At =
                 !!Object.getOwnPropertySymbols &&
                 !e(function () {
                     var e = Symbol("symbol detection");
@@ -478,7 +478,7 @@ var MimeText = (function (t, e) {
                         (!Symbol.sham && t && t < 41)
                     );
                 })),
-            Mt
+            At
         );
     }
     function te() {
@@ -573,8 +573,8 @@ var MimeText = (function (t, e) {
         Oe,
         Te,
         xe,
-        Ae,
         Me,
+        Ae,
         je,
         Ee,
         Ce,
@@ -715,13 +715,13 @@ var MimeText = (function (t, e) {
         });
     }
     function Ue() {
-        if (Me) return Ae;
-        Me = 1;
+        if (Ae) return Me;
+        Ae = 1;
         var t = V(),
             e = qt(),
             r = t.document,
             n = e(r) && e(r.createElement);
-        return (Ae = function (t) {
+        return (Me = function (t) {
             return n ? r.createElement(t) : {};
         });
     }
@@ -968,19 +968,19 @@ var MimeText = (function (t, e) {
                 O = e.global,
                 T = e.stat,
                 x = e.proto,
-                A = O ? t : T ? t[w] : t[w] && t[w].prototype,
-                M = O ? u : u[w] || s(u, w, {})[w],
-                j = M.prototype;
+                M = O ? t : T ? t[w] : t[w] && t[w].prototype,
+                A = O ? u : u[w] || s(u, w, {})[w],
+                j = A.prototype;
             for (p in l)
                 (h =
                     !(d = o(O ? p : w + (T ? "." : "#") + p, e.forced)) &&
-                    A &&
-                    c(A, p)),
-                    (y = M[p]),
+                    M &&
+                    c(M, p)),
+                    (y = A[p]),
                     h &&
                         (g = e.dontCallGetSet
-                            ? (S = i(A, p)) && S.value
-                            : A[p]),
+                            ? (S = i(M, p)) && S.value
+                            : M[p]),
                     (m = h && g ? g : l[p]),
                     (d || x || typeof y != typeof m) &&
                         ((b =
@@ -993,7 +993,7 @@ var MimeText = (function (t, e) {
                                     : m),
                         (e.sham || (m && m.sham) || (y && y.sham)) &&
                             s(b, "sham", !0),
-                        s(M, p, b),
+                        s(A, p, b),
                         x &&
                             (c(u, (v = w + "Prototype")) || s(u, v, {}),
                             s(u[v], p, m),
@@ -1034,11 +1034,11 @@ var MimeText = (function (t, e) {
     function xr() {
         return fr ? cr : ((fr = 1), (cr = Tr()));
     }
-    function Ar() {
+    function Mr() {
         return dr ? lr : ((dr = 1), (lr = xr()));
     }
-    function Mr() {
-        return vr ? hr : ((vr = 1), (hr = Ar()));
+    function Ar() {
+        return vr ? hr : ((vr = 1), (hr = Mr()));
     }
     var jr,
         Er,
@@ -1069,7 +1069,7 @@ var MimeText = (function (t, e) {
         Qr,
         tn,
         en,
-        rn = T(Mr()),
+        rn = T(Ar()),
         nn = {};
     function on() {
         if (Er) return jr;
@@ -1322,8 +1322,8 @@ var MimeText = (function (t, e) {
         });
     }
     var xn,
-        An,
         Mn,
+        An,
         jn,
         En,
         Cn,
@@ -1342,8 +1342,8 @@ var MimeText = (function (t, e) {
         Vn,
         Wn = {};
     function zn() {
-        if (An) return xn;
-        An = 1;
+        if (Mn) return xn;
+        Mn = 1;
         var t = an(),
             e = Math.max,
             r = Math.min;
@@ -1353,7 +1353,7 @@ var MimeText = (function (t, e) {
         });
     }
     function Un() {
-        if (jn) return Mn;
+        if (jn) return An;
         jn = 1;
         var t = Xt(),
             e = zn(),
@@ -1373,7 +1373,7 @@ var MimeText = (function (t, e) {
                     return !n && -1;
                 };
             };
-        return (Mn = { includes: n(!0), indexOf: n(!1) });
+        return (An = { includes: n(!0), indexOf: n(!1) });
     }
     function Xn() {
         return Cn ? En : ((Cn = 1), (En = {}));
@@ -1606,8 +1606,8 @@ var MimeText = (function (t, e) {
         Oi,
         Ti,
         xi,
-        Ai,
         Mi,
+        Ai,
         ji,
         Ei,
         Ci,
@@ -1670,15 +1670,15 @@ var MimeText = (function (t, e) {
               });
     }
     function Hi() {
-        if (Mi) return Ai;
-        Mi = 1;
+        if (Ai) return Mi;
+        Ai = 1;
         var t = dn(),
             e = gr().f,
             r = br(),
             n = ke(),
             i = Ni(),
             o = Ve()("toStringTag");
-        return (Ai = function (u, a, s, c) {
+        return (Mi = function (u, a, s, c) {
             var f = s ? u : u && u.prototype;
             f &&
                 (n(f, o) || e(f, o, { configurable: !0, value: a }),
@@ -1785,13 +1785,13 @@ var MimeText = (function (t, e) {
                             O = i(w),
                             T = t(p, m),
                             x = 0,
-                            A = y || o,
-                            M = a ? A(v, O) : s || d ? A(v, 0) : void 0;
+                            M = y || o,
+                            A = a ? M(v, O) : s || d ? M(v, 0) : void 0;
                         O > x;
                         x++
                     )
                         if ((h || x in w) && ((b = T((g = w[x]), x, S)), e))
-                            if (a) M[x] = b;
+                            if (a) A[x] = b;
                             else if (b)
                                 switch (e) {
                                     case 3:
@@ -1801,16 +1801,16 @@ var MimeText = (function (t, e) {
                                     case 6:
                                         return x;
                                     case 2:
-                                        u(M, g);
+                                        u(A, g);
                                 }
                             else
                                 switch (e) {
                                     case 4:
                                         return !1;
                                     case 7:
-                                        u(M, g);
+                                        u(A, g);
                                 }
-                    return l ? -1 : c || f ? f : M;
+                    return l ? -1 : c || f ? f : A;
                 };
             };
         return (Pi = {
@@ -1905,8 +1905,8 @@ var MimeText = (function (t, e) {
                         O = $n(),
                         T = Gt(),
                         x = mi(),
-                        A = yi(),
-                        M = Ne(),
+                        M = yi(),
+                        A = Ne(),
                         j = Zn(),
                         E = Xn(),
                         C = Ge(),
@@ -1933,9 +1933,9 @@ var MimeText = (function (t, e) {
                         Q = g.f,
                         tt = T.f,
                         nt = n([].push),
-                        it = M("symbols"),
-                        ot = M("op-symbols"),
-                        ut = M("wks"),
+                        it = A("symbols"),
+                        ot = A("op-symbols"),
+                        ut = A("wks"),
                         at = !$ || !$[H] || !$[H].findChild,
                         st = function (t, e, r) {
                             var n = J(z, e);
@@ -2094,7 +2094,7 @@ var MimeText = (function (t, e) {
                             return ft(I(t), t);
                         }),
                         o &&
-                            (A(q, "description", {
+                            (M(q, "description", {
                                 configurable: !0,
                                 get: function () {
                                     return G(this).description;
@@ -2336,13 +2336,13 @@ var MimeText = (function (t, e) {
         Oo = {};
     var To;
     var xo,
-        Ao,
         Mo,
+        Ao,
         jo = {};
     function Eo() {
-        return Mo
-            ? Ao
-            : ((Mo = 1),
+        return Ao
+            ? Mo
+            : ((Ao = 1),
               (function () {
                   if (en) return nn;
                   en = 1;
@@ -2428,7 +2428,7 @@ var MimeText = (function (t, e) {
                   var t = V();
                   Hi()(t.JSON, "JSON", !0);
               })(),
-              (Ao = Yt().Symbol));
+              (Mo = Yt().Symbol));
     }
     var Co,
         Io,
@@ -2660,7 +2660,7 @@ var MimeText = (function (t, e) {
             O = function () {
                 return this;
             };
-        return (Jo = function (n, l, h, T, x, A, M) {
+        return (Jo = function (n, l, h, T, x, M, A) {
             o(h, l, T);
             var j,
                 E,
@@ -2706,13 +2706,13 @@ var MimeText = (function (t, e) {
                 x)
             )
                 if (
-                    ((E = { values: I(S), keys: A ? _ : I(b), entries: I(w) }),
-                    M)
+                    ((E = { values: I(S), keys: M ? _ : I(b), entries: I(w) }),
+                    A)
                 )
                     for (C in E) (y || F || !(C in D)) && f(D, C, E[C]);
                 else t({ target: l, proto: !0, forced: y || F }, E);
             return (
-                (r && !M) || D[g] === _ || f(D, g, _, { name: x }),
+                (r && !A) || D[g] === _ || f(D, g, _, { name: x }),
                 (d[l] = _),
                 E
             );
@@ -2823,13 +2823,13 @@ var MimeText = (function (t, e) {
         for (var i in t) r(e[i], i), (n[i] = n.Array);
         return su;
     }
-    function Au() {
+    function Mu() {
         if (au) return uu;
         au = 1;
         var t = Eo();
         return xu(), (uu = t);
     }
-    var Mu,
+    var Au,
         ju = {};
     var Eu;
     var Cu;
@@ -2837,11 +2837,11 @@ var MimeText = (function (t, e) {
     function Du() {
         if (Fu) return Pu;
         Fu = 1;
-        var t = Au();
+        var t = Mu();
         return (
             (function () {
-                if (Mu) return ju;
-                Mu = 1;
+                if (Au) return ju;
+                Au = 1;
                 var t = Ve(),
                     e = gr().f,
                     r = t("metadata"),
@@ -3074,8 +3074,8 @@ var MimeText = (function (t, e) {
     }
     var Ta,
         xa,
-        Aa,
         Ma,
+        Aa,
         ja,
         Ea,
         Ca,
@@ -3105,7 +3105,7 @@ var MimeText = (function (t, e) {
         return xa ? Ta : ((xa = 1), So(), (Ta = _i().f("toPrimitive")));
     }
     function Ra() {
-        return Ma ? Aa : ((Ma = 1), (Aa = _a()));
+        return Aa ? Ma : ((Aa = 1), (Ma = _a()));
     }
     function Ba() {
         return Ea ? ja : ((Ea = 1), (ja = Ra()));
@@ -3282,7 +3282,7 @@ var MimeText = (function (t, e) {
         return fs ? cs : ((fs = 1), (cs = Os()));
     }
     var xs = T(ds ? ls : ((ds = 1), (ls = Ts())));
-    class As {
+    class Ms {
         constructor(t) {
             let e =
                 arguments.length > 1 && void 0 !== arguments[1]
@@ -3345,7 +3345,7 @@ var MimeText = (function (t, e) {
             return !!t && t.constructor === Object;
         }
     }
-    class Ms {
+    class As {
         constructor(t) {
             Va(this, "envctx", void 0),
                 Va(this, "fields", [
@@ -3391,7 +3391,9 @@ var MimeText = (function (t, e) {
                         name: "Message-ID",
                         generator: () =>
                             "<" +
-                            Math.random().toString(36).slice(2) +
+                            ""
+                                .concat(Math.random().toString(36).slice(2))
+                                .concat(Math.random().toString(36).slice(2)) +
                             "@" +
                             this.fields
                                 .filter((t) => "From" === t.name)[0]
@@ -3489,10 +3491,10 @@ var MimeText = (function (t, e) {
             );
         }
         validateMailboxSingle(t) {
-            return t instanceof As;
+            return t instanceof Ms;
         }
         validateMailboxMulti(t) {
-            return t instanceof As || this.isArrayOfMailboxes(t);
+            return t instanceof Ms || this.isArrayOfMailboxes(t);
         }
         dumpMailboxMulti(t) {
             const e = (t) =>
@@ -3503,12 +3505,12 @@ var MimeText = (function (t, e) {
                           .concat(t.addr, ">");
             return this.isArrayOfMailboxes(t)
                 ? t.map(e).join(",".concat(this.envctx.eol, " "))
-                : t instanceof As
+                : t instanceof Ms
                   ? e(t)
                   : "";
         }
         dumpMailboxSingle(t) {
-            return t instanceof As
+            return t instanceof Ms
                 ? ((t) =>
                       0 === t.name.length
                           ? t.dump()
@@ -3543,13 +3545,13 @@ var MimeText = (function (t, e) {
             return !!t && t.constructor === Object;
         }
         isArrayOfMailboxes(t) {
-            return this.isArray(t) && t.every((t) => t instanceof As);
+            return this.isArray(t) && t.every((t) => t instanceof Ms);
         }
         isArray(t) {
             return !!t && t.constructor === Array;
         }
     }
-    class js extends Ms {
+    class js extends As {
         constructor(t) {
             super(t),
                 Va(this, "fields", [
@@ -3614,7 +3616,7 @@ var MimeText = (function (t, e) {
                 ]),
                 Va(this, "messages", []),
                 (this.envctx = t),
-                (this.headers = new Ms(this.envctx)),
+                (this.headers = new As(this.envctx)),
                 (this.messages = []),
                 this.generateBoundaries();
         }
@@ -3928,7 +3930,7 @@ var MimeText = (function (t, e) {
             return this.messages.push(e), e;
         }
         setSender(t) {
-            const e = new As(
+            const e = new Ms(
                 t,
                 arguments.length > 1 && void 0 !== arguments[1]
                     ? arguments[1]
@@ -3944,7 +3946,7 @@ var MimeText = (function (t, e) {
                 arguments.length > 1 && void 0 !== arguments[1]
                     ? arguments[1]
                     : { type: "To" };
-            const r = (this.isArray(t) ? t : [t]).map((t) => new As(t, e));
+            const r = (this.isArray(t) ? t : [t]).map((t) => new Ms(t, e));
             return this.setHeader(e.type, r), r;
         }
         getRecipients() {
@@ -4040,9 +4042,9 @@ var MimeText = (function (t, e) {
     return (
         (t.MIMEMessage = Cs),
         (t.MIMEMessageContent = Es),
-        (t.MIMEMessageHeader = Ms),
+        (t.MIMEMessageHeader = As),
         (t.MIMETextError = Wa),
-        (t.Mailbox = As),
+        (t.Mailbox = Ms),
         (t.createMimeMessage = function () {
             return new Cs(Is);
         }),

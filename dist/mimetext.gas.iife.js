@@ -154,16 +154,16 @@ var MimeText = (function (t, e) {
                       return "function" == typeof t;
                   });
     }
-    var H,
+    var $,
+        H,
         P,
         B,
-        $,
         L = {};
     function R() {
-        return P
-            ? H
-            : ((P = 1),
-              (H = !h()(function () {
+        return H
+            ? $
+            : ((H = 1),
+              ($ = !h()(function () {
                   return (
                       7 !==
                       Object.defineProperty({}, 1, {
@@ -175,17 +175,17 @@ var MimeText = (function (t, e) {
               })));
     }
     function F() {
-        if ($) return B;
-        $ = 1;
+        if (B) return P;
+        B = 1;
         var t = p(),
             e = Function.prototype.call;
         return (
-            (B = t
+            (P = t
                 ? e.bind(e)
                 : function () {
                       return e.apply(e, arguments);
                   }),
-            B
+            P
         );
     }
     var N,
@@ -355,7 +355,7 @@ var MimeText = (function (t, e) {
             (ot = e)
         );
     }
-    function Ht() {
+    function $t() {
         if (ut) return at;
         ut = 1;
         var t = Dt(),
@@ -372,21 +372,21 @@ var MimeText = (function (t, e) {
                 );
             }));
     }
-    function Pt() {
+    function Ht() {
         return dt
             ? ct
             : ((dt = 1),
               (ct =
-                  Ht() && !Symbol.sham && "symbol" == typeof Symbol.iterator));
+                  $t() && !Symbol.sham && "symbol" == typeof Symbol.iterator));
     }
-    function Bt() {
+    function Pt() {
         if (lt) return ft;
         lt = 1;
         var t = At(),
             e = D(),
             n = v(),
             r = Object;
-        return (ft = Pt()
+        return (ft = Ht()
             ? function (t) {
                   return "symbol" == typeof t;
               }
@@ -395,7 +395,7 @@ var MimeText = (function (t, e) {
                   return e(o) && n(o.prototype, r(i));
               });
     }
-    function $t() {
+    function Bt() {
         if (pt) return ht;
         pt = 1;
         var t = String;
@@ -411,7 +411,7 @@ var MimeText = (function (t, e) {
         if (vt) return mt;
         vt = 1;
         var t = D(),
-            e = $t(),
+            e = Bt(),
             n = TypeError;
         return (mt = function (r) {
             if (t(r)) return r;
@@ -558,8 +558,8 @@ var MimeText = (function (t, e) {
             e = ye(),
             n = Me(),
             r = Te(),
-            i = Ht(),
-            o = Pt(),
+            i = $t(),
+            o = Ht(),
             s = t.Symbol,
             a = e("wks"),
             u = o ? s.for || s : (s && s.withoutSetter) || r;
@@ -574,7 +574,7 @@ var MimeText = (function (t, e) {
         ne = 1;
         var t = F(),
             e = Ct(),
-            n = Bt(),
+            n = Pt(),
             r = Rt(),
             i = Ft(),
             o = TypeError,
@@ -599,7 +599,7 @@ var MimeText = (function (t, e) {
         if (ie) return re;
         ie = 1;
         var t = xe(),
-            e = Bt();
+            e = Pt();
         return (re = function (n) {
             var r = t(n, "string");
             return e(r) ? r : r + "";
@@ -704,10 +704,10 @@ var MimeText = (function (t, e) {
     var Ae,
         _e,
         De,
+        $e,
         He,
         Pe,
         Be,
-        $e,
         Le,
         Re,
         Fe,
@@ -759,8 +759,8 @@ var MimeText = (function (t, e) {
                   })));
     }
     function gn() {
-        if (He) return De;
-        He = 1;
+        if ($e) return De;
+        $e = 1;
         var t = Ct(),
             e = String,
             n = TypeError;
@@ -770,8 +770,8 @@ var MimeText = (function (t, e) {
         });
     }
     function Mn() {
-        if (Pe) return bn;
-        Pe = 1;
+        if (He) return bn;
+        He = 1;
         var t = R(),
             e = je(),
             n = yn(),
@@ -823,12 +823,12 @@ var MimeText = (function (t, e) {
         );
     }
     function Tn() {
-        if ($e) return Be;
-        $e = 1;
+        if (Be) return Pe;
+        Be = 1;
         var t = R(),
             e = Mn(),
             n = xt();
-        return (Be = t
+        return (Pe = t
             ? function (t, r, i) {
                   return e.f(t, r, n(1, i));
               }
@@ -1069,19 +1069,19 @@ var MimeText = (function (t, e) {
                 : i;
         });
     }
-    function Hn() {
+    function $n() {
         return un ? an : ((un = 1), (an = Dn()));
     }
+    function Hn() {
+        return dn ? cn : ((dn = 1), (cn = $n()));
+    }
     function Pn() {
-        return dn ? cn : ((dn = 1), (cn = Hn()));
+        return ln ? fn : ((ln = 1), (fn = Hn()));
     }
     function Bn() {
-        return ln ? fn : ((ln = 1), (fn = Pn()));
+        return pn ? hn : ((pn = 1), (hn = Pn()));
     }
-    function $n() {
-        return pn ? hn : ((pn = 1), (hn = Bn()));
-    }
-    var Ln = l(vn ? mn : ((vn = 1), (mn = $n())));
+    var Ln = l(vn ? mn : ((vn = 1), (mn = Bn())));
     class Rn {
         reSpecCompliantAddr = /(([^<>\r\n]+)\s)?<[^\r\n]+>/;
         name = "";
@@ -1182,7 +1182,7 @@ var MimeText = (function (t, e) {
                 name: "Message-ID",
                 generator: () =>
                     "<" +
-                    Math.random().toString(36).slice(2) +
+                    `${Math.random().toString(36).slice(2)}${Math.random().toString(36).slice(2)}` +
                     "@" +
                     this.fields
                         .filter((t) => "From" === t.name)[0]

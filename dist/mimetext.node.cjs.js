@@ -136,7 +136,7 @@ class d {
             name: "Message-ID",
             generator: () =>
                 "<" +
-                Math.random().toString(36).slice(2) +
+                `${Math.random().toString(36).slice(2)}${Math.random().toString(36).slice(2)}` +
                 "@" +
                 this.fields
                     .filter((e) => "From" === e.name)[0]

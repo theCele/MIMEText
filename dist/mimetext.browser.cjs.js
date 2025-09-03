@@ -121,7 +121,9 @@ class r {
                     name: "Message-ID",
                     generator: () =>
                         "<" +
-                        Math.random().toString(36).slice(2) +
+                        ""
+                            .concat(Math.random().toString(36).slice(2))
+                            .concat(Math.random().toString(36).slice(2)) +
                         "@" +
                         this.fields
                             .filter((e) => "From" === e.name)[0]
@@ -732,7 +734,7 @@ class h {
         this.headers.removeMany(e);
     }
 }
-const l = {
+const c = {
     toBase64: function (t) {
         return e.Base64.encode(t);
     },
@@ -748,6 +750,6 @@ const l = {
     (exports.MIMETextError = i),
     (exports.Mailbox = a),
     (exports.createMimeMessage = function () {
-        return new h(l);
+        return new h(c);
     });
 //# sourceMappingURL=mimetext.browser.cjs.js.map

@@ -49,7 +49,7 @@ export class MIMEMessageHeader {
         {
             name: "Message-ID",
             generator: () => {
-                const randomstr = Math.random().toString(36).slice(2);
+                const randomstr = `${Math.random().toString(36).slice(2)}${Math.random().toString(36).slice(2)}`;
                 const from = this.fields.filter(
                     (obj) => obj.name === "From",
                 )[0]!.value as Mailbox;
